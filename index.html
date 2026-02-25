@@ -67,12 +67,17 @@
             text-decoration: none;
         }
 
-        .logo img {
+        .logo-icon {
             width: 60px;
             height: 60px;
+            background: var(--primary-orange);
             border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+            border: 3px solid var(--accent-gold);
         }
 
         .logo-text h3 {
@@ -133,8 +138,8 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(26,26,26,0.8), rgba(232,93,4,0.4)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231A1A1A" width="1200" height="800"/><path fill="%23FF6B35" opacity="0.1" d="M0 400h1200v400H0z"/><circle cx="200" cy="200" r="100" fill="%23FF6B35" opacity="0.2"/><circle cx="1000" cy="600" r="150" fill="%23FFB627" opacity="0.1"/></svg>');
+            background: linear-gradient(135deg, rgba(26,26,26,0.9), rgba(232,93,4,0.6)), 
+                        url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1920');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -145,36 +150,37 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,50 Q40,30 50,50 T80,50" fill="none" stroke="%23FF6B35" stroke-width="0.5" opacity="0.3"/></svg>');
-            background-size: 200px;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-100px) rotate(360deg); }
-        }
-
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 900px;
             padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-logo {
             width: 150px;
             height: 150px;
+            background: var(--primary-orange);
             border-radius: 50%;
-            border: 5px solid var(--primary-orange);
-            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 4rem;
+            color: var(--white);
+            border: 5px solid var(--accent-gold);
             animation: pulse 2s infinite;
             box-shadow: 0 0 50px rgba(255,107,53,0.5);
         }
@@ -322,19 +328,6 @@
             background: var(--white);
             position: relative;
             overflow: hidden;
-        }
-
-        .about::before {
-            content: 'SUFI';
-            position: absolute;
-            top: 50%;
-            left: -100px;
-            transform: translateY(-50%) rotate(-90deg);
-            font-size: 15rem;
-            color: rgba(255,107,53,0.05);
-            font-weight: 900;
-            font-family: 'Playfair Display', serif;
-            pointer-events: none;
         }
 
         .about-grid {
@@ -520,13 +513,13 @@
             font-size: 1.2rem;
             white-space: nowrap;
             margin-left: 1rem;
+            text-align: right;
         }
 
         .price-note {
             font-size: 0.75rem;
             color: #999;
             display: block;
-            text-align: right;
         }
 
         /* Combo Deals Special */
@@ -740,6 +733,7 @@
             font-weight: 700;
             margin-top: 1rem;
             display: block;
+            text-decoration: none;
         }
 
         /* Delivery Banner */
@@ -750,23 +744,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .delivery-banner::before {
-            content: '🛵';
-            position: absolute;
-            font-size: 10rem;
-            opacity: 0.1;
-            right: 10%;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: drive 10s infinite linear;
-        }
-
-        @keyframes drive {
-            0% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-50%) translateX(-50px); }
-            100% { transform: translateY(-50%) translateX(0); }
         }
 
         .delivery-content h2 {
@@ -949,9 +926,474 @@
                 grid-template-columns: 1fr;
             }
         }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="logo-text">
+                    <h3>SUFI</h3>
+                    <span>THE TASTE</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#combos">Deals</a></li>
+                <li><a href="#locations">Locations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
 
-        /* Loading Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <h1>SUFI <span>THE TASTE</span></h1>
+            <p class="tagline">"Zaiqa Jo Dil Jeet Ley!"</p>
+            <p class="sub-tagline">A Complete Restaurant For Everyone</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">View Menu</a>
+                <a href="tel:03256555888" class="btn btn-secondary">Call Now</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-content">
+                <h3>Welcome to Sufi The Taste</h3>
+                <p>Experience the authentic flavors of Pakistan with our carefully crafted dishes. From sizzling BBQ to aromatic Biryani, we bring you the true essence of desi cuisine.</p>
+                <p>Our chefs use traditional recipes with premium ingredients to ensure every bite is memorable. Whether you're craving spicy Karahi or tender Kababs, we have something special for every palate.</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-fire"></i>
+                        <span>Fresh BBQ Daily</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-leaf"></i>
+                        <span>Halal Ingredients</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>Fast Delivery</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <span>Event Catering</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800" alt="Delicious Food">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="section-header">
+            <h2>Our Menu</h2>
+            <p>Discover our wide range of authentic Pakistani dishes crafted with love and tradition</p>
+        </div>
+        
+        <div class="menu-tabs">
+            <button class="tab-btn active">All</button>
+            <button class="tab-btn">BBQ</button>
+            <button class="tab-btn">Biryani</button>
+            <button class="tab-btn">Karahi</button>
+            <button class="tab-btn">Fast Food</button>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Biryani/Pulao -->
+            <div class="menu-category">
+                <h3><i class="fas fa-bowl-rice"></i> Biryani / Pulao</h3>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Biryani</h4>
+                        <p>Aromatic basmati rice with tender chicken</p>
+                    </div>
+                    <div class="menu-item-price">
+                        430 <span class="price-note">Single</span>
+                        <span style="display: block; margin-top: 5px;">560 <span class="price-note">Double</span></span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Pulao</h4>
+                        <p>Fragrant rice cooked with chicken and spices</p>
+                    </div>
+                    <div class="menu-item-price">
+                        430 <span class="price-note">Single</span>
+                        <span style="display: block; margin-top: 5px;">560 <span class="price-note">Double</span></span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Tikka Biryani</h4>
+                        <p>Smoky tikka pieces with spiced rice</p>
+                    </div>
+                    <div class="menu-item-price">670</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Malai Tikka Biryani</h4>
+                        <p>Creamy malai tikka with aromatic rice</p>
+                    </div>
+                    <div class="menu-item-price">690</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Zarda</h4>
+                        <p>Sweet rice dessert with nuts</p>
+                    </div>
+                    <div class="menu-item-price">220</div>
+                </div>
+            </div>
+
+            <!-- BBQ Section -->
+            <div class="menu-category">
+                <h3><i class="fas fa-fire"></i> B.B.Q Special</h3>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Grilled Damra Fish BBQ</h4>
+                        <p>Fresh fish grilled to perfection (per kg)</p>
+                    </div>
+                    <div class="menu-item-price">950/1600</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Turkish Kabab</h4>
+                        <p>2 Seekh of authentic Turkish style</p>
+                    </div>
+                    <div class="menu-item-price">700</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Beef Turkish Kabab</h4>
+                        <p>2 Seekh of spicy beef kababs</p>
+                    </div>
+                    <div class="menu-item-price">800</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Rajistani Qalmi Tikka</h4>
+                        <p>3 Pieces of specialty tikka</p>
+                    </div>
+                    <div class="menu-item-price">550</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Tikka</h4>
+                        <p>Leg/Chest piece with traditional marinade</p>
+                    </div>
+                    <div class="menu-item-price">390/420</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Malai Boti</h4>
+                        <p>Creamy tender chicken pieces</p>
+                    </div>
+                    <div class="menu-item-price">440</div>
+                </div>
+            </div>
+
+            <!-- Chicken Karahi -->
+            <div class="menu-category">
+                <h3><i class="fas fa-drumstick-bite"></i> Chicken Karahi</h3>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Special Karahi</h4>
+                        <p>Chef's special recipe with secret spices</p>
+                    </div>
+                    <div class="menu-item-price">
+                        950 <span class="price-note">Half</span>
+                        <span style="display: block; margin-top: 5px;">1700 <span class="price-note">Full</span></span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Karahi</h4>
+                        <p>Traditional desi style karahi</p>
+                    </div>
+                    <div class="menu-item-price">
+                        900 <span class="price-note">Half</span>
+                        <span style="display: block; margin-top: 5px;">1600 <span class="price-note">Full</span></span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken White Karahi</h4>
+                        <p>Creamy white gravy specialty</p>
+                    </div>
+                    <div class="menu-item-price">
+                        950 <span class="price-note">Half</span>
+                        <span style="display: block; margin-top: 5px;">1650 <span class="price-note">Full</span></span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Shinwari Karahi</h4>
+                        <p>Peshawari style with minimal spices</p>
+                    </div>
+                    <div class="menu-item-price">
+                        900 <span class="price-note">Half</span>
+                        <span style="display: block; margin-top: 5px;">1600 <span class="price-note">Full</span></span>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Afghani Karahi</h4>
+                        <p>Rich Afghan style preparation</p>
+                    </div>
+                    <div class="menu-item-price">
+                        900 <span class="price-note">Half</span>
+                        <span style="display: block; margin-top: 5px;">1600 <span class="price-note">Full</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Burgers -->
+            <div class="menu-category">
+                <h3><i class="fas fa-hamburger"></i> Burgers</h3>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Monster Burger</h4>
+                        <p>Double patty with special sauce</p>
+                    </div>
+                    <div class="menu-item-price">540</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Sufi Signature Burger</h4>
+                        <p>Our special recipe burger</p>
+                    </div>
+                    <div class="menu-item-price">550</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Double Crispy Burger</h4>
+                        <p>Double crispy chicken fillet</p>
+                    </div>
+                    <div class="menu-item-price">580</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Zinger Burger</h4>
+                        <p>Crispy fried chicken burger</p>
+                    </div>
+                    <div class="menu-item-price">360</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Patty Burger</h4>
+                        <p>Grilled chicken patty with veggies</p>
+                    </div>
+                    <div class="menu-item-price">380</div>
+                </div>
+            </div>
+
+            <!-- Tandoor -->
+            <div class="menu-category">
+                <h3><i class="fas fa-fire-burner"></i> Tandoor</h3>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Roti Per Head</h4>
+                        <p>Fresh tandoori roti</p>
+                    </div>
+                    <div class="menu-item-price">100</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Naan</h4>
+                        <p>Butter naan / Garlic naan</p>
+                    </div>
+                    <div class="menu-item-price">80-120</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Roghni Naan</h4>
+                        <p>Traditional roghni naan</p>
+                    </div>
+                    <div class="menu-item-price">100</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Kalwanji Naan</h4>
+                        <p>Naan with kalwanji seeds</p>
+                    </div>
+                    <div class="menu-item-price">100</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Cheese Naan</h4>
+                        <p>Stuffed with melted cheese</p>
+                    </div>
+                    <div class="menu-item-price">500</div>
+                </div>
+            </div>
+
+            <!-- Rolls & Wraps -->
+            <div class="menu-category">
+                <h3><i class="fas fa-burrito"></i> Rolls & Wraps</h3>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Chicken Chatni Roll</h4>
+                        <p>With special green chutney</p>
+                    </div>
+                    <div class="menu-item-price">330</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Malai Chatni Roll</h4>
+                        <p>Creamy malai boti roll</p>
+                    </div>
+                    <div class="menu-item-price">350</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Zinger Roll</h4>
+                        <p>Crispy chicken zinger roll</p>
+                    </div>
+                    <div class="menu-item-price">400</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Shawarma Wrap</h4>
+                        <p>Arabic style shawarma</p>
+                    </div>
+                    <div class="menu-item-price">400-500</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>Sufi Special Roll</h4>
+                        <p>Our signature roll</p>
+                    </div>
+                    <div class="menu-item-price">450</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Combo Deals -->
+    <section class="combo-section" id="combos">
+        <div class="section-header">
+            <h2>Combo Deals</h2>
+            <p>Special packages perfect for families and gatherings</p>
+        </div>
+        
+        <div class="combo-grid">
+            <div class="combo-card featured">
+                <div class="combo-badge">Best Value</div>
+                <div class="combo-number">01</div>
+                <div class="combo-content">
+                    <h3>Deal 1 - Family Feast</h3>
+                    <ul class="combo-items">
+                        <li>Kalmi Tikka 3pcs</li>
+                        <li>Green Boti 4pcs</li>
+                        <li>Tikka Boti 4pcs</li>
+                        <li>Reshmi Kabab 3pcs</li>
+                        <li>Chicken Kabab 3pcs</li>
+                        <li>1 Kalwanji Naan, 2 Sada Roti</li>
+                        <li>Biryani, Rice, Zarda, Raita/Salad</li>
+                        <li>1.5 Litre Next Cola</li>
+                    </ul>
+                    <div class="combo-price">2599/-</div>
+                </div>
+            </div>
+
+            <div class="combo-card">
+                <div class="combo-number">02</div>
+                <div class="combo-content">
+                    <h3>Deal 2 - BBQ Platter</h3>
+                    <ul class="combo-items">
+                        <li>Kalmi Tikka 3pcs</li>
+                        <li>Green Boti 4pcs</li>
+                        <li>Tikka Boti 4pcs</li>
+                        <li>Reshmi Kabab 2pcs</li>
+                        <li>Chicken Kabab 2pcs</li>
+                        <li>1 Kalwanji Naan, 2 Sada Roti</li>
+                        <li>Biryani, Rice, Zarda, Raita/Salad</li>
+                        <li>1 Litre Next Cola</li>
+                    </ul>
+                    <div class="combo-price">2399/-</div>
+                </div>
+            </div>
+
+            <div class="combo-card">
+                <div class="combo-number">03</div>
+                <div class="combo-content">
+                    <h3>Deal 3 - Tikka Special</h3>
+                    <ul class="combo-items">
+                        <li>Chicken Tikka 1pc</li>
+                        <li>Chicken Kabab 2pcs</li>
+                        <li>Roghni Naan</li>
+                        <li>Zarda</li>
+                        <li>Raita/Salad</li>
+                    </ul>
+                    <div class="combo-price">1100/-</div>
+                </div>
+            </div>
+
+            <div class="combo-card">
+                <div class="combo-number">04</div>
+                <div class="combo-content">
+                    <h3>Deal 4 - Biryani Combo</h3>
+                    <ul class="combo-items">
+                        <li>Chicken Tikka Biryani</li>
+                        <li>Shami Kabab 1pc</li>
+                        <li>Zarda</li>
+                        <li>Raita/Salad</li>
+                        <li>1 Regular Drink</li>
+                    </ul>
+                    <div class="combo-price">900/-</div>
+                </div>
+            </div>
+
+            <div class="combo-card">
+                <div class="combo-number">05</div>
+                <div class="combo-content">
+                    <h3>Deal 5 - Burger Meal</h3>
+                    <ul class="combo-items">
+                        <li>2 Chicken Zinger Burgers</li>
+                        <li>2 Regular Drinks</li>
+                        <li>Fries</li>
+                    </ul>
+                    <div class="combo-price">799/-</div>
+                </div>
+            </div>
+
+            <div class="combo-card">
+                <div class="combo-number">06</div>
+                <div class="combo-content">
+                    <h3>Deal 6 - Rice Special</h3>
+                    <ul class="combo-items">
+                        <li>1 Chicken Biryani</li>
+                        <li>1 Chicken Pulao</li>
+                        <li>1 Zarda</li>
+                        <li>2 Regular Drinks</li>
+                        <li>Raita + Salad</li>
+                    </ul>
+                    <div class="combo-price">1150/-</div>
+                </div>
+            </div>
+
+            <div class="combo-card">
+                <div class="combo-number">
